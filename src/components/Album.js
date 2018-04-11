@@ -15,7 +15,7 @@ class Album extends Component {
        album: album,
        currentSong: album.songs[0],
        currentTime: 0,
-       currentVolume: 0.05,
+       currentVolume: 0.3,
        duration: album.songs[0].duration,
        isPlaying: false
 
@@ -99,7 +99,7 @@ class Album extends Component {
 
   handleVolumeChange(e) {
     const newVolume = e.target.value;
-    this.audioElement.currentVolume = newVolume;
+    this.audioElement.volume = newVolume;
     this.setState({ currentVolume: newVolume});
   }
 
@@ -124,7 +124,7 @@ class Album extends Component {
         <tbody>
           {
             this.state.album.songs.map((song,index)=>
-            <tr className="song" key={index} onClick={() => this.handleSongClick(song)} >
+            <tr className="song" key={index} onClick={() => this.handleSongClick(song)}>
               <td className="song-actions">
                 <button>
                   <span className={this.props.isPlaying ? 'ion-pause' : 'ion-play'}>{index + 1}</span>
