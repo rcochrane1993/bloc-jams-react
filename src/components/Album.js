@@ -15,7 +15,7 @@ class Album extends Component {
        album: album,
        currentSong: album.songs[0],
        currentTime: 0,
-       currentVolume: 0.4,
+       currentVolume: 0.05,
        duration: album.songs[0].duration,
        isPlaying: false
 
@@ -25,6 +25,7 @@ class Album extends Component {
      this.audioElement.src = album.songs[0].audioSrc;
   }
   componentDidMount() {
+    this.audioElement.volume = this.state.currentVolume
     this.eventListeners = {
        timeupdate: e => {
          this.setState({ currentTime: this.audioElement.currentTime });
@@ -33,7 +34,7 @@ class Album extends Component {
          this.setState({ duration: this.audioElement.duration });
        },
        volumechange: e => {
-         this.setState({currentVolume: this.audioElement.volume})
+         this.setState({currentVolume: this.audioElement.currentVolume})
        }
      };
      this.audioElement.addEventListener('timeupdate', this.eventListeners.timeupdate);
@@ -52,7 +53,6 @@ class Album extends Component {
   play(){
     this.audioElement.play();
     this.setState({isPlaying: true});
-    console.log(this.state.currentVolume)
 
   }
 
@@ -98,7 +98,7 @@ class Album extends Component {
   }
 
   handleVolumeChange(e) {
-    const newVolume = this.audioElement.currentVolume * e.target.value;
+    const newVolume = e.target.value;
     this.audioElement.currentVolume = newVolume;
     this.setState({ currentVolume: newVolume});
   }
