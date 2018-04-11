@@ -9,13 +9,10 @@ class Album extends Component {
     const album = albumData.find( album => {
        return album.slug === this.props.match.params.slug
      });
-     const songs = albumData.find( album => {
-       return album.songs
-     })
+
 
      this.state = {
        album: album,
-       songs: songs,
        currentSong: album.songs[0],
        isPlaying: false
      };
@@ -78,9 +75,7 @@ class Album extends Component {
             <tr className="song" key={index} onClick={() => this.handleSongClick(song)} >
               <td className="song-actions">
                 <button>
-                  <span className="song-number">{index+1}</span>
-                  <span className="ion-play"></span>
-                  <span className="ion-pause"></span>
+                  <span className={this.props.isPlaying ? 'ion-pause' : 'ion-play'}>{index + 1}</span>
                 </button>
               </td>
               <td className="song-title">{song.title}</td>
