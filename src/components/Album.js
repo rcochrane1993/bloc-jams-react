@@ -108,7 +108,9 @@ class Album extends Component {
     const seconds = Math.floor(e % 60);
     const m = minutes.toString();
     const ss = seconds.toString();
-    if(isNaN(e)) {
+    if (ss <=9) {
+      return m +":"+"0"+ss
+    }else if(isNaN(e)) {
       return "-:--"
     } else {
       return m +":"+ss
@@ -139,7 +141,7 @@ class Album extends Component {
             <tr className="song" key={index} onClick={() => this.handleSongClick(song)}>
               <td className="song-actions">
                 <button>
-                  <span className={this.props.isPlaying ? 'ion-pause' : 'ion-play'}>{index + 1}</span>
+                  <span className="song-number">{index + 1}</span>
                 </button>
               </td>
               <td className="song-title">{song.title}</td>
