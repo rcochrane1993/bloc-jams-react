@@ -108,7 +108,9 @@ class Album extends Component {
     const seconds = Math.floor(e % 60);
     const m = minutes.toString();
     const ss = seconds.toString();
-    if(isNaN(e)) {
+    if (ss <=9) {
+      return m +":"+"0"+ss
+    }else if(isNaN(e)) {
       return "-:--"
     } else {
       return m +":"+ss
