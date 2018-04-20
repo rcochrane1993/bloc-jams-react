@@ -17,8 +17,7 @@ class Album extends Component {
        currentTime: 0,
        currentVolume: 0.3,
        duration: album.songs[0].duration,
-       isPlaying: false,
-       isPaused: false
+       isPlaying: false
 
      };
 
@@ -60,7 +59,6 @@ class Album extends Component {
   pause(){
     this.audioElement.pause();
     this.setState({ isPlaying: false});
-    this.setState({ isPaused: true});
   }
 
   setSong(song) {
@@ -143,7 +141,7 @@ class Album extends Component {
             <tr className="song" key={index} onClick={() => this.handleSongClick(song)}>
               <td className="song-actions">
                 <button>
-                  <span className="play-pause">{this.props.isPlaying ? 'ion-pause' : 'ion-play'}{index + 1}</span>
+                  <span className={this.props.isPlaying ? 'ion-pause' : 'ion-play'}>{index + 1}</span>
                 </button>
               </td>
               <td className="song-title">{song.title}</td>
