@@ -143,7 +143,7 @@ class Album extends Component {
             <tr className="song" key={index} onClick={() => this.handleSongClick(song)}>
               <td className="song-actions">
                 <button>
-                  <span className="song-number">{this.state.isPlaying ? "ion-pause"  : index + 1}</span>
+                  <span className="play-pause">{this.props.isPlaying ? 'ion-pause' : 'ion-play'}{index + 1}</span>
                 </button>
               </td>
               <td className="song-title">{song.title}</td>
