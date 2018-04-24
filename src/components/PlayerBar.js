@@ -19,7 +19,7 @@ class PlayerBar extends Component {
         <div className="current-time">{this.props.formatTime(this.props.currentTime)}</div>
          <input
            type="range"
-           className="seek-bar"
+           className="seek-bar custom"
            value={(this.props.currentTime / this.props.duration) || 0}
            max="1"
            min="0"

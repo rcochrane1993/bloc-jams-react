@@ -17,8 +17,7 @@ class Album extends Component {
        currentTime: 0,
        currentVolume: 0.3,
        duration: album.songs[0].duration,
-       isPlaying: false,
-       isPaused: false
+       isPlaying: false
 
      };
 
@@ -61,7 +60,6 @@ class Album extends Component {
   pause(){
     this.audioElement.pause();
     this.setState({ isPlaying: false});
-    this.setState({ isPaused: true});
   }
 
   setSong(song) {
