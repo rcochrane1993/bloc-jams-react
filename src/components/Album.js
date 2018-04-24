@@ -118,6 +118,9 @@ class Album extends Component {
     }
   }
 
+chooseDisplay(){
+
+}
 
 
    render() {
