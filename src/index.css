@@ -1,3 +1,12 @@
+nav {
+  font-family: "Londrina Solid";
+}
+
+nav a {
+  margin-right: 10px;
+  color: #3131b3;
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -5,11 +14,21 @@ body {
   background-color: gray;
 }
 
+button {
+  background-color: black;
+  color: white;
+}
+
 h1 {
-font-family: "Luckiest Guy";
-font-size: 98px;
-margin-top: 30px;
-margin-bottom: 30px;
+  font-family: "Luckiest Guy";
+  font-size: 98px;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+#logo {
+  height: 200px;
+  width: 200px;
 }
 
 .album #album-cover-art {
@@ -30,8 +49,16 @@ margin-bottom: 30px;
   color: white;
 }
 
-#play-pause {
-  background-color: black;
+.ion-pause{
+  color: white;
+}
+
+.ion-skip-backward{
+  color: white;
+}
+
+.ion-skip-forward{
+  color:white;
 }
 
 .seek-bar-custom {

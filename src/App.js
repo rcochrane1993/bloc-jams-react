@@ -14,8 +14,10 @@ class App extends Component {
           <Link to='/'>Landing</Link>
           <Link to='/library'>Library</Link>
         </nav>
-        <h1>Bloc Jams</h1>
-        </header>
+        <h1>
+          <img id='logo' src='/assets/images/bloc_jams_logo.png' alt="bloc jams logo"/>
+        </h1>
+      </header>
         <main>
           <Route exact path="/" component={Landing} />
           <Route path="/library" component={Library} />
