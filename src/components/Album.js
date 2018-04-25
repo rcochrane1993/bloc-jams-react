@@ -19,7 +19,8 @@ class Album extends Component {
        duration: album.songs[0].duration,
        isPlaying: false,
        isPaused: false,
-       isHovered: false
+       isHovered: false,
+       hoveredSong: album.songs[0]
 
      };
 
@@ -108,7 +109,7 @@ class Album extends Component {
   }
 
 handleHover(song){
-  this.setState({ isHovered: true});
+  this.setState({ isHovered: true, hoveredSong : song});
 }
 
 handleHoverLeave(song){
@@ -130,7 +131,7 @@ handleHoverLeave(song){
   }
 
   chooseDisplay(song){
-    return song !== this.state.currentSong ? (this.state.isHovered ? "ion-play" : "song-number") : (this.state.isPlaying ? "ion-pause" : "ion-play" )
+    return song !== this.state.currentSong ? (this.state.isHovered && song === this.state.hoveredSong ? "ion-play" : "song-number" ) : (this.state.isPlaying ? "ion-pause" : "ion-play" )
   }
 
    render() {
@@ -154,9 +155,9 @@ handleHoverLeave(song){
           {
             this.state.album.songs.map((song,index)=>
             <tr className="song-playing" key={index} onMouseEnter={() => this.handleHover(song)} onMouseLeave={() => this.handleHoverLeave(song)}  onClick={() => this.handleSongClick(song)}>
-              <td className="song-actions">
+              <td className="song-actions" >
                 <button>
-                  {song !== this.state.currentSong ? (this.state.isHovered ?
+                  {song !== this.state.currentSong ? (this.state.isHovered && song === this.state.hoveredSong ?
                     <span className={this.chooseDisplay(song)}></span> :
                     <span className="song-number">{index + 1}</span>) :
                     <span className={this.chooseDisplay(song)}></span>}
