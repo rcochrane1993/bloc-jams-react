@@ -17,7 +17,9 @@ class Album extends Component {
        currentTime: 0,
        currentVolume: 0.3,
        duration: album.songs[0].duration,
-       isPlaying: false
+       isPlaying: false,
+       isPaused: false,
+       isHovered: false
 
      };
 
@@ -60,6 +62,7 @@ class Album extends Component {
   pause(){
     this.audioElement.pause();
     this.setState({ isPlaying: false});
+    this.setState({ isPaused: true});
   }
 
   setSong(song) {
@@ -104,6 +107,14 @@ class Album extends Component {
     this.setState({ currentVolume: newVolume});
   }
 
+handleHover(song){
+  this.setState({ isHovered: true});
+}
+
+handleHoverLeave(song){
+  this.setState({isHovered:false});
+}
+
   formatTime(e){
     const minutes = Math.floor(e / 60);
     const seconds = Math.floor(e % 60);
@@ -118,10 +129,9 @@ class Album extends Component {
     }
   }
 
-chooseDisplay(){
-
-}
-
+  chooseDisplay(song){
+    return song !== this.state.currentSong ? (this.state.isHovered ? "ion-play" : "song-number") : (this.state.isPlaying ? "ion-pause" : "ion-play" )
+  }
 
    render() {
      return (
@@ -143,12 +153,13 @@ chooseDisplay(){
         <tbody>
           {
             this.state.album.songs.map((song,index)=>
-            <tr className="song-playing" key={index} onMouseEnter onClick={() => this.handleSongClick(song)}>
+            <tr className="song-playing" key={index} onMouseEnter={() => this.handleHover(song)} onMouseLeave={() => this.handleHoverLeave(song)}  onClick={() => this.handleSongClick(song)}>
               <td className="song-actions">
                 <button>
-                  <span className='song-number'>{index + 1}</span>
-                  <span className='ion-pause'></span>
-                  <span className='ion-play'></span>
+                  {song !== this.state.currentSong ? (this.state.isHovered ?
+                    <span className={this.chooseDisplay(song)}></span> :
+                    <span className="song-number">{index + 1}</span>) :
+                    <span className={this.chooseDisplay(song)}></span>}
                 </button>
               </td>
               <td className="song-title">{song.title}</td>

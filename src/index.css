@@ -26,6 +26,15 @@ h1 {
   margin-bottom: 30px;
 }
 
+table#song-list {
+  height: 300px;
+  width: 300px;
+}
+
+tr.song-playing:hover .ion-play{
+  display:inline
+}
+
 #logo {
   height: 200px;
   width: 200px;
@@ -44,6 +53,8 @@ h1 {
   height: 300px;
   width: 300px;
 }
+
+
 
 .ion-play {
   color: white;
@@ -78,5 +89,5 @@ h1 {
 }
 
 .song-playing .ion-pause, .song-playing .song-number {
-  display: none;
+  display: inline;
 }
